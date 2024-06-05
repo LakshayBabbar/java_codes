@@ -2,8 +2,8 @@ package IO;
 
 import java.io.*;
 
-public class ByteStream {
-    public ByteStream() {
+public class FileSize {
+    public FileSize() {
         try {
             FileInputStream file = new FileInputStream("bin.txt");
             int i = 0;

@@ -2,7 +2,7 @@ package swings;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.*;
+import IO.WriteFile;
 
 public class FormApplet {
     public FormApplet() {
@@ -23,20 +23,14 @@ public class FormApplet {
 
         submit.addActionListener(e -> {
             result.setText(null);
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("./database.txt", true))) {
-                writer.write("\n\n**New User**\n");
-                writer.write("Username: " + username.getText() + "\n");
-                writer.write("Email: " + email.getText() + "\n");
-                writer.write("Password: " + password.getText() + "\n");
-                result.setText("Your response is submitted!");
-            } catch (IOException err) {
-                System.err.println(err.toString());
-                result.setText("An error occured: " + err);
-            } finally {
-                username.setText(null);
-                email.setText(null);
-                password.setText(null);
-            }
+            final String data = "\n\nNew User\nUsername: " + username.getText() + "\nEmail: " + email.getText()
+                    + "\nPassword: " + password.getText();
+            WriteFile file = new WriteFile("database.txt", data);
+            result.setText("Your response is submitted!");
+            username.setText(null);
+            email.setText(null);
+            password.setText(null);
+
         });
         frame.add(formTitle);
         frame.add(username);

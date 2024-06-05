@@ -1,7 +1,7 @@
-import IO.ByteStream;
-import swings.FormApplet;
+import IO.*;
+import swings.*;
 
-public class Example {
+public class Main {
     public static void main(String[] args) {
         FormApplet form = new FormApplet();
     }
